@@ -11,13 +11,15 @@ class GalleryViewModel {
     //ViewModel Initialization
     private var networkProvider: NetworkManager
     var reloadCollectionView: (() -> Void)?
+    var inserCells: (() -> Void)?
     var networkError: (() -> Void)?
     var galleryItems = [GalleryItem]()
+    var newIndexPaths = [IndexPath]()
     var index = 0
     var numberOfColumns: CGFloat = 0
     var galleryCellViewModels = [GalleryCellViewModel]() {
         didSet {
-            reloadCollectionView?()
+            self.newIndexPaths.count == 0 ? reloadCollectionView?() : inserCells?()
         }
     }
     
@@ -54,6 +56,7 @@ class GalleryViewModel {
             return
         }
         var newIndex = self.index + Int(self.numberOfColumns)
+        self.newIndexPaths = []
         if(newIndex > self.galleryItems.count - 1){
             newIndex = self.galleryItems.count
         }
@@ -61,6 +64,9 @@ class GalleryViewModel {
         var cellViewModels = self.galleryCellViewModels
         for tempIndex in self.index..<newIndex {
             cellViewModels.append(initCellModel(galleryItem: self.galleryItems[tempIndex]))
+            if(self.index != 0){
+                self.newIndexPaths.append(IndexPath(row: tempIndex, section: 0))
+            }
         }
         
         self.index = newIndex
@@ -87,6 +93,14 @@ extension GalleryView{
             DispatchQueue.main.async {
                 self?.state = .showCollection
                 self?.collectionView.reloadData()
+            }
+        }
+        
+        self.viewModel.inserCells = { [weak self] in
+            DispatchQueue.main.async {
+                self?.state = .showCollection
+                self?.collectionView.insertItems(at: self?.viewModel.newIndexPaths ?? [])
+                self?.viewModel.newIndexPaths = []
             }
         }
         
