@@ -7,6 +7,7 @@ target 'ImgUrTest' do
 
   # Pods for ImgUrTest
   pod 'Moya'
+  pod 'Kingfisher', '~> 7.0'
 
   target 'ImgUrTestTests' do
     inherit! :search_paths

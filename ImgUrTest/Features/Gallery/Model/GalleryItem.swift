@@ -6,7 +6,7 @@
 //
 
 struct GalleryItem: Decodable{
-    var id: String
+    var id: String?
     var title: String?
-    var images: [ImageItem]
+    var images: [ImageItem]?
 }
