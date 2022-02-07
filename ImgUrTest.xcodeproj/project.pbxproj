@@ -101,14 +101,10 @@
 		ED30A4A527B0BC4E00FEA105 /* ImgUrTest */ = {
 			isa = PBXGroup;
 			children = (
-				ED30A4A627B0BC4E00FEA105 /* AppDelegate.swift */,
-				ED30A4A827B0BC4E00FEA105 /* SceneDelegate.swift */,
-				ED30A4AA27B0BC4E00FEA105 /* ViewController.swift */,
-				ED30A4AC27B0BC4E00FEA105 /* Main.storyboard */,
-				ED30A4B227B0BC5100FEA105 /* Assets.xcassets */,
-				ED30A4B427B0BC5100FEA105 /* LaunchScreen.storyboard */,
-				ED30A4B727B0BC5100FEA105 /* Info.plist */,
-				ED30A4AF27B0BC4E00FEA105 /* ImgUrTest.xcdatamodeld */,
+				ED30A4E227B0C13C00FEA105 /* Network */,
+				ED30A4DD27B0BDFD00FEA105 /* Application */,
+				ED30A4DC27B0BDEE00FEA105 /* Features */,
+				ED30A4D927B0BDD400FEA105 /* Data */,
 			);
 			path = ImgUrTest;
 			sourceTree = "<group>";
@@ -128,6 +124,74 @@
 				ED30A4CC27B0BC5100FEA105 /* ImgUrTestUITestsLaunchTests.swift */,
 			);
 			path = ImgUrTestUITests;
+			sourceTree = "<group>";
+		};
+		ED30A4D927B0BDD400FEA105 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ED30A4AF27B0BC4E00FEA105 /* ImgUrTest.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		ED30A4DC27B0BDEE00FEA105 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ED30A4DE27B0BF2700FEA105 /* Gallery */,
+				ED30A4AC27B0BC4E00FEA105 /* Main.storyboard */,
+				ED30A4AA27B0BC4E00FEA105 /* ViewController.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ED30A4DD27B0BDFD00FEA105 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ED30A4B227B0BC5100FEA105 /* Assets.xcassets */,
+				ED30A4B727B0BC5100FEA105 /* Info.plist */,
+				ED30A4A627B0BC4E00FEA105 /* AppDelegate.swift */,
+				ED30A4A827B0BC4E00FEA105 /* SceneDelegate.swift */,
+				ED30A4B427B0BC5100FEA105 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ED30A4DE27B0BF2700FEA105 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				ED30A4E127B0C12500FEA105 /* ViewModel */,
+				ED30A4E027B0C11A00FEA105 /* View */,
+				ED30A4DF27B0C10C00FEA105 /* Model */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		ED30A4DF27B0C10C00FEA105 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED30A4E027B0C11A00FEA105 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED30A4E127B0C12500FEA105 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ED30A4E227B0C13C00FEA105 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
