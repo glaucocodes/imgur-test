@@ -25,7 +25,15 @@ class GalleryCellView: UICollectionViewCell{
                 options: [
                     .scaleFactor(UIScreen.main.scale),
                     .cacheOriginalImage
-                ])
+                ]){
+                    result in
+                    switch result {
+                    case .failure(_):
+                        self.imageView.image = UIImage(named: "NotFound")
+                    case .success(_):
+                        break
+                    }
+                }
         }
     }
     

@@ -10,6 +10,6 @@ import Moya
 
 // Setup NetworkManager
 struct NetworkManager: Networkable {
-    var imgProvider: MoyaProvider<ImgAPI> = MoyaProvider<ImgAPI>(plugins: [NetworkLoggerPlugin()])
+    var imgProvider: MoyaProvider<ImgAPI> = MoyaProvider<ImgAPI>(plugins: [])
     static let enviroment: APIEnvironment = (UIApplication.shared.delegate as! AppDelegate).enviroment
 }

@@ -11,7 +11,7 @@ class GalleryViewModel {
     //ViewModel Initialization
     private var networkProvider: NetworkManager
     var reloadCollectionView: (() -> Void)?
-    var inserCells: (() -> Void)?
+    var insertCells: (() -> Void)?
     var networkError: (() -> Void)?
     var galleryItems = [GalleryItem]()
     var newIndexPaths = [IndexPath]()
@@ -19,7 +19,7 @@ class GalleryViewModel {
     var numberOfColumns: CGFloat = 0
     var galleryCellViewModels = [GalleryCellViewModel]() {
         didSet {
-            self.newIndexPaths.count == 0 ? reloadCollectionView?() : inserCells?()
+            self.newIndexPaths.count == 0 ? reloadCollectionView?() : insertCells?()
         }
     }
     
@@ -96,12 +96,12 @@ extension GalleryView{
             }
         }
         
-        self.viewModel.inserCells = { [weak self] in
-            DispatchQueue.main.async {
-                self?.state = .showCollection
+        self.viewModel.insertCells = { [weak self] in
+            self?.collectionView.reloadData()
+            self?.collectionView.performBatchUpdates({
                 self?.collectionView.insertItems(at: self?.viewModel.newIndexPaths ?? [])
                 self?.viewModel.newIndexPaths = []
-            }
+               })
         }
         
         self.viewModel.networkError = { [weak self] in
