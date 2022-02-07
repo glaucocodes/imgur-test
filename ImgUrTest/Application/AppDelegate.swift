@@ -10,11 +10,11 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    var enviroment : APIEnvironment = APIEnvironment.init(rawValue: Utils.getValueFromInfoList(key: "ENV")) ?? APIEnvironment.dev
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 
