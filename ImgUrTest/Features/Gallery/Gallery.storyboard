@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAM-tL-7pD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAM-tL-7pD">
+                                <rect key="frame" x="0.0" y="56" width="414" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="fSJ-ea-PwV"/>
                                 </constraints>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lN4-27-9dQ">
-                                <rect key="frame" x="0.0" y="76.5" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -35,7 +35,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9W3-Yq-Uvm">
-                                <rect key="frame" x="0.0" y="127.5" width="414" height="729.5"/>
+                                <rect key="frame" x="0.0" y="139.5" width="414" height="717.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="51m-qQ-k5Y">
                                     <size key="itemSize" width="128" height="128"/>
@@ -55,10 +55,10 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDV-GD-oTR">
-                                <rect key="frame" x="0.0" y="127.5" width="414" height="729.5"/>
+                                <rect key="frame" x="0.0" y="139.5" width="414" height="717.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the search bar to find awesome images" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lr5-at-GGc">
-                                        <rect key="frame" x="0.0" y="338.5" width="414" height="53"/>
+                                        <rect key="frame" x="0.0" y="332.5" width="414" height="53"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="QlX-Yd-lyg"/>
                                         </constraints>
@@ -76,10 +76,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dK-6b-0rR">
-                                <rect key="frame" x="0.0" y="127.5" width="414" height="729.5"/>
+                                <rect key="frame" x="0.0" y="139.5" width="414" height="717.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Images, try again" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntl-ko-1SW">
-                                        <rect key="frame" x="102.5" y="351.5" width="209.5" height="27"/>
+                                        <rect key="frame" x="102.5" y="345.5" width="209.5" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -91,6 +91,9 @@
                                     <constraint firstItem="ntl-ko-1SW" firstAttribute="centerY" secondItem="9dK-6b-0rR" secondAttribute="centerY" id="ZsX-Qw-60N"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="kIn-YX-SDI">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,11 +109,13 @@
                             <constraint firstItem="9W3-Yq-Uvm" firstAttribute="leading" secondItem="LDV-GD-oTR" secondAttribute="leading" id="YlE-Vy-F9z"/>
                             <constraint firstItem="lN4-27-9dQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bvl-4Y-EYB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QAM-tL-7pD" secondAttribute="trailing" id="d2u-Qa-G8t"/>
+                            <constraint firstItem="kIn-YX-SDI" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="dDF-Rl-E2X"/>
                             <constraint firstItem="9dK-6b-0rR" firstAttribute="width" secondItem="LDV-GD-oTR" secondAttribute="width" id="dM7-42-Nj3"/>
-                            <constraint firstItem="QAM-tL-7pD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="emd-tb-XId"/>
+                            <constraint firstItem="QAM-tL-7pD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="emd-tb-XId"/>
                             <constraint firstItem="9W3-Yq-Uvm" firstAttribute="trailing" secondItem="LDV-GD-oTR" secondAttribute="trailing" id="ev3-MW-mYk"/>
                             <constraint firstItem="lN4-27-9dQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gj7-dV-2vg"/>
                             <constraint firstItem="9W3-Yq-Uvm" firstAttribute="top" secondItem="LDV-GD-oTR" secondAttribute="top" id="iRm-bu-qa9"/>
+                            <constraint firstItem="kIn-YX-SDI" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="jV0-9v-JtY"/>
                             <constraint firstItem="9W3-Yq-Uvm" firstAttribute="centerX" secondItem="LDV-GD-oTR" secondAttribute="centerX" id="mLm-8H-9uI"/>
                             <constraint firstItem="9dK-6b-0rR" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="rEh-uQ-hFe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9dK-6b-0rR" secondAttribute="bottom" constant="5" id="rHQ-O9-eTJ"/>
@@ -123,6 +128,7 @@
                         <outlet property="loadingView" destination="LDV-GD-oTR" id="tfe-fr-gIW"/>
                         <outlet property="searchBar" destination="lN4-27-9dQ" id="rxE-RZ-f2v"/>
                         <outlet property="searchTopLabel" destination="QAM-tL-7pD" id="y9a-Zk-PrH"/>
+                        <outlet property="searchingIndicator" destination="kIn-YX-SDI" id="Vec-bh-oEK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

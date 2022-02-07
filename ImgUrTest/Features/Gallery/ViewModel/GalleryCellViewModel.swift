@@ -6,5 +6,7 @@
 //
 
 import Foundation
-class GalleryCellViewModel {
+// Setup the GalleryCell ViewModel
+struct GalleryCellViewModel {
+    var uRl: String
 }

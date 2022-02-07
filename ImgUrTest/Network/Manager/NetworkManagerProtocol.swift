@@ -7,6 +7,8 @@
 
 import Foundation
 import Moya
+
+// NetworkManager protocol
 protocol Networkable{
     var imgProvider: MoyaProvider<ImgAPI>{get}
     func searchImg(queryValue: String,onResult: @escaping ([GalleryItem])->(),onError: @escaping (Error)->())

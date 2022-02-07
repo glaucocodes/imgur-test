@@ -6,7 +6,7 @@
 //
 
 struct ImageItem: Decodable{
-    var id: String
+    var id: String?
     var title: String?
-    var link: String
+    var link: String?
 }

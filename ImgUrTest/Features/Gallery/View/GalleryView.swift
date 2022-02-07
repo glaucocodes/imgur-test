@@ -12,7 +12,8 @@ import UIKit
 extension GalleryView {
     enum State {
         case loading
-        case showCollection([GalleryItem])
+        case showCollection
+        case searching
         case error
     }
 }
@@ -25,30 +26,42 @@ class GalleryView: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchTopLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchingIndicator: UIActivityIndicatorView!
     
     
     //Variables and constants declaration
-    var viewModel: GalleryViewModel?
+    lazy var viewModel = {GalleryViewModel()}()
     let numberOfColumns: CGFloat = 3
     let spacing: CGFloat = 10
     
     //View state handle
-    private var state: State = .loading {
+    var state: State = .loading {
         didSet {
             switch state {
             case .showCollection:
                 self.errorView.isHidden = true
                 self.collectionView.isHidden = false
                 self.loadingView.isHidden = true
-                self.collectionView.reloadData()
+                self.searchingIndicator.isHidden = true
+                self.searchingIndicator.stopAnimating()
             case .loading:
                 self.errorView.isHidden = true
                 self.collectionView.isHidden = true
                 self.loadingView.isHidden = false
+                self.searchingIndicator.isHidden = true
+                self.searchingIndicator.stopAnimating()
+            case .searching:
+                self.errorView.isHidden = true
+                self.collectionView.isHidden = true
+                self.loadingView.isHidden = true
+                self.searchingIndicator.isHidden = false
+                self.searchingIndicator.startAnimating()
             case .error:
                 self.errorView.isHidden = false
                 self.collectionView.isHidden = true
                 self.loadingView.isHidden = true
+                self.searchingIndicator.isHidden = true
+                self.searchingIndicator.stopAnimating()
             }
         }
     }
@@ -62,7 +75,8 @@ class GalleryView: UIViewController {
     
     //Init view, set delegates, datasources and custom UI
     func initView(){
-        self.state = .showCollection([])
+        self.viewModel.numberOfColumns = numberOfColumns
+        self.state = .loading
         self.searchTopLabel.text = ""
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -70,7 +84,13 @@ class GalleryView: UIViewController {
         self.collectionView.collectionViewLayout = flowLayout
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.searchBar.delegate = self
+        self.searchBar.showsCancelButton = false
+        self.searchBar.backgroundImage = UIImage()
+        initViewModel()
     }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -88,7 +108,7 @@ class GalleryView: UIViewController {
 //Number of items to show
 extension GalleryView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return self.viewModel.galleryCellViewModels.count
     }
 }
 
@@ -97,8 +117,8 @@ extension GalleryView: UICollectionViewDataSource{
 extension GalleryView: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCellView.identifier, for: indexPath)
-        cell.backgroundColor = .blue
+        let cell: GalleryCellView = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCellView.identifier, for: indexPath) as! GalleryCellView
+        cell.viewModel = self.viewModel.getCollectionViewModel(at: indexPath)
         return cell
     }
     
@@ -117,6 +137,7 @@ extension GalleryView: UICollectionViewDelegateFlowLayout{
         return UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
     }
     
+    // Screen rotation handle
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         guard let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {

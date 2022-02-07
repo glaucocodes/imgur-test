@@ -4,16 +4,29 @@
 <dict>
 	<key>API_DEV</key>
 	<string>https://api.imgur.com/3</string>
-	<key>API_QA</key>
-	<string>https://api.imgur.com/3</string>
 	<key>API_PROD</key>
 	<string>https://api.imgur.com/3</string>
-	<key>ENV</key>
-	<string>API_DEV</string>
+	<key>API_QA</key>
+	<string>https://api.imgur.com/3</string>
 	<key>Client-ID</key>
 	<string>Client-ID 311250c7d7d9788</string>
-    <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>ENV</key>
+	<string>API_DEV</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>yourdomain.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
