@@ -41,7 +41,7 @@ class GalleryViewModel {
     
     //Set feteching data to local cache, if we don´t have results, we show the network error buy we can create a custom error
     func updateData(galleryItems: [GalleryItem]) {
-        self.galleryItems = galleryItems
+        self.galleryItems = galleryItems.filter({$0.images!.contains(where:{!($0.link?.contains("mp4"))!})})
         self.index = 0
         if(galleryItems.count == 0){
             self.networkError?()
