@@ -18,18 +18,19 @@ class GalleryCellView: UICollectionViewCell{
     // Setup the conection between the UIColletionViewCell and ViewModel, feteching the images from internet
     var viewModel: GalleryCellViewModel? {
         didSet {
+            KingfisherManager.shared.downloader.downloadTimeout = 30
             let url = URL(string: viewModel!.uRl)
             self.imageView.kf.indicatorType = .activity
             self.imageView.kf.setImage(
                 with:url,
-                options: [
-                    .scaleFactor(UIScreen.main.scale),
-                    .cacheOriginalImage
-                ]){
+                    options: [
+                        .cacheOriginalImage
+                    ]){
                     result in
                     switch result {
-                    case .failure(_):
+                    case .failure(let error):
                         self.imageView.image = UIImage(named: "NotFound")
+                        print(error)
                     case .success(_):
                         break
                     }
