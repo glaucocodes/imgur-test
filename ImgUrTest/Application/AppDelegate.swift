@@ -12,19 +12,11 @@ import Kingfisher
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var enviroment : APIEnvironment = APIEnvironment.init(rawValue: Utils.getValueFromInfoList(key: "ENV")) ?? APIEnvironment.dev
     
-    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KingfisherManager.shared.downloader.downloadTimeout = 120
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Gallery", bundle: nil)
-        let galleryView: GalleryView = mainStoryboard.instantiateViewController(withIdentifier: "GalleryView") as! GalleryView
-        
-        
-        self.window?.rootViewController = galleryView
-        
-        self.window?.makeKeyAndVisible()
+      
         return true
     }
 
